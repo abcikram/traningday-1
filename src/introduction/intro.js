@@ -1,7 +1,7 @@
 const batchName = "Plutonium"
 
 let printName = function() {
-    console.log('Bathc name is ', batchName)
+    console.log('Bathch name is ', batchName)
 }
 
 module.exports.name = batchName
