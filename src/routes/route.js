@@ -2,18 +2,86 @@ const express = require('express');
 const abc = require('../introduction/intro')
 const router = express.Router();
 
+
+
 router.get('/test-me', function (req, res) {
     console.log('My batch is', abc.name)
     abc.printName()
-    logger.welcome()
+   // logger.welcome()
 
     res.send('My second ever api!')
 });
 
-router.get('/students', function (req, res){
-    let students = ['Sabiha', 'Neha', 'Akash']
-    res.send(students)
+
+
+////////////////////////////////////////// 1st question ////////////////////////////////////////
+
+router.get('/get-movies', function (req, res){
+    let moviesname = ['Sholay', 'DDLJ', '3idiots', 'endgame'] ;
+    res.send(moviesname)
 })
+
+
+////////////////////////////////////////// 2nd question ////////////////////////////////////////
+
+router.get('/get-movies/:indexnumber',function (req, res){
+
+ let movies1=['SHOLAY','DANGAL','DON 2','GOOD NEWS']
+    let index = (req.params.indexnumber)
+    console.log(movies1[index])
+    res.send(movies1[index])
+
+})
+
+////////////////////////////////////////// 3rd question ////////////////////////////////////////
+
+router.get('/get-movies/:indexnumber',function (req, res){
+
+    let movies1=['SHOLAY','DANGAL','DON 2','GOOD NEWS']
+    let index = (req.params.indexnumber) 
+    if (index > movies1.length){
+        console.log("put valid index") ;
+        return res.send("put valid index");
+    }
+    else{
+        res.send(movies1[index]);
+    }
+})
+
+////////////////////////////////////////// 4th question ////////////////////////////////////////
+
+router.get('/get-films',function (req, res){
+
+   let movies2 = [ {'id': 1 ,'name':"The Shining"} , 
+                   {'id': 2 ,'name':"Incendies"} ,
+                   {'id': 3 ,'name':"Rang De Basanti"} ,
+                   {'id': 4 ,'name':"Finding Nemo"} ];
+
+   res.send(movies2)
+   })
+
+
+////////////////////////////////////////// 5th question ////////////////////////////////////////
+
+router.get('/get-films/:indexnumber',function (req, res){
+
+    let movies2 = [ {'id': 1 ,'name':"The Shining"} , 
+                    {'id': 2 ,'name':"Incendies"} ,
+                    {'id': 3 ,'name':"Rang De Basanti"} ,
+                    {'id': 4 ,'name':"Finding Nemo"} ];
+                    
+    let index = (req.params.indexnumber) 
+    if (index > movies2.length){
+        console.log("put valid index") ;
+        return res.send("put valid index");
+    }
+    else{
+        res.send(movies2[index]);
+    }
+    })
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 router.get('/student-details/:name', function(req, res){
     /*
