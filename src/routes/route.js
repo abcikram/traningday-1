@@ -38,14 +38,15 @@ router.get('/get-movies/:indexnumber',function (req, res){
 router.get('/get-movies/:indexnumber',function (req, res){
 
     let movies1=['SHOLAY','DANGAL','DON 2','GOOD NEWS']
-    let index = (req.params.indexnumber) 
-    if (index > movies1.length){
-        console.log("put valid index") ;
-        return res.send("put valid index");
+    let index = (req.params.indexnumber)   // params - key value pair ke ney  // req - website a requiest pathay
+    if (index < 0 || index >= movies1.length){
+        return res.send("The index value is not currect ,put valid index");
     }
-    else{
-        res.send(movies1[index]);
-    }
+    // else{
+    //     res.send(movies1[index]);
+    // }
+      let movies3 = movies1[index]
+      res.send(movies3[index]) 
 })
 
 ////////////////////////////////////////// 4th question ////////////////////////////////////////
@@ -63,21 +64,24 @@ router.get('/get-films',function (req, res){
 
 ////////////////////////////////////////// 5th question ////////////////////////////////////////
 
-router.get('/get-films/:indexnumber',function (req, res){
+router.get('/get-films/:filmld',function (req, res){
 
     let movies2 = [ {'id': 1 ,'name':"The Shining"} , 
                     {'id': 2 ,'name':"Incendies"} ,
                     {'id': 3 ,'name':"Rang De Basanti"} ,
                     {'id': 4 ,'name':"Finding Nemo"} ];
                     
-    let index = (req.params.indexnumber) 
-    if (index > movies2.length){
-        console.log("put valid index") ;
-        return res.send("put valid index");
-    }
-    else{
-        res.send(movies2[index]);
-    }
+    let flimindex = (req.params.filmld) 
+    for (let i=0 ; i< movies2.length;i++)
+       {
+          let flim = movies2[i]
+          if (flim.id == flimindex){
+              return res.send(flim)
+          }
+       }
+
+        res.send("the flim id doesnot match any movie");
+
     })
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
