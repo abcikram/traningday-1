@@ -5,7 +5,7 @@ const bookSchema = new mongoose.Schema( {
         type : String,
         require : true,
         }, 
-    authorName : String, 
+    authorName : mongoose.Schema.Types.Mixed, 
     tags: [String],
     year: Number,
     totalPage: Number,
