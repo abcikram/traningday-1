@@ -26,12 +26,12 @@ const createBlog = async function (req, res) {
       res.status(400).send({ status: false, msg: "authorId is not present" });
     }
   } catch (err) {
-    res.status(500).send({ msg: "error", error: err.message });
+    res.status(500).send({ msg: "error", error: err.message })
   }
-};
+}
 
 
-//========================================= Get blogs ============================================================//
+//============================================= Get blogs ============================================================//
 
 
 
@@ -44,7 +44,7 @@ const getAllBlogs = async (req, res) => {
     if (!allBlogs) {
       return res.status(400).send({ msg: "not valid" });
     }
-    res.status(201).send({ status: true, msg: allBlogs });
+    res.status(200).send({ status: true, msg: allBlogs });
   } catch (err) {
     res.status(500).send({ staus: false, error: err.message });
   }
@@ -55,6 +55,7 @@ const getAllBlogs = async (req, res) => {
 
 
 const updatedBlogsData = async function (req, res) {
+  try{
   let getId = req.params.blogId;
   let data = req.body;
   let checkId = await blogsModel.findOne({ _id: getId });
@@ -78,8 +79,10 @@ const updatedBlogsData = async function (req, res) {
   } else {
     res.status(404).send({ status: false, msg: "please enter valid blog id" });
   }
-};
-
+   }catch(error){
+    res.status(400).send({status:false,error:error.message})
+  }
+}
 
 //=========================================== Delete by params ========================================================//
 

@@ -50,5 +50,6 @@ const authorSchema = new mongoose.Schema({
 }, { timestamps: true })
 
 
-module.exports = mongoose.model('author', authorSchema)
+module.exports = mongoose.model('author', authorSchema) // colectionname , collection schema this is a function use to create
+//particular database in mogodb
 
